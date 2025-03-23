@@ -1,5 +1,5 @@
 {
-  "name": "NepDai",
+  "name": "nep-dai",
   "private": true,
   "scripts": {
     "build": "turbo run build",
