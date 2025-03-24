@@ -1,7 +1,7 @@
 {
-    "name": "@nepdai/shared",
+    "name": "@nepdai/lexer",
     "version": "1.0.0",
-    "description": "Shared utilities and types for the Nepdai compiler",
+    "description": "Lexer for the Nepdai language",
     "private": true,
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

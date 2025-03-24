@@ -1,0 +1,23 @@
+{
+    "name": "@nepdai/cli",
+    "version": "1.0.0",
+    "main": "bin/index.js",
+    "source": "src/index.ts",
+    "scripts": {
+        "dev": "ts-node src/index.ts",
+        "build": "tsup src/* --dts --outDir bin"
+    },
+    "bin": {
+        "nepdai": "./bin/index.js"
+    },
+    "dependencies": {
+        "chalk": "^4.1.0"
+    },
+    "devDependencies": {
+        "@nepdai/typescript-config": "workspace:*",
+        "@types/node": "^22.13.12",
+        "ts-node": "^10.9.2",
+        "tsup": "^8.4.0",
+        "typescript": "^5.8.2"
+    }
+}
