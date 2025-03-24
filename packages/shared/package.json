@@ -1,0 +1,9 @@
+{
+    "name": "@nepdai/shared",
+    "version": "1.0.0",
+    "description": "Shared utilities and types for the Nepdai compiler",
+    "private": true,
+    "devDependencies": {
+        "typescript": "^5.8.2"
+    }
+}
