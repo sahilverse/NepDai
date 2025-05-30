@@ -12,6 +12,10 @@
     },
     "devDependencies": {
         "@nepdai/typescript-config": "workspace:*",
+        "@nepdai/shared": "workspace:*",
+        "@nepdai/lexer": "workspace:*",
+        "@nepdai/parser": "workspace:*",
+        "@nepdai/interpreter": "workspace:*",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.2",
         "tsup": "^8.4.0"
