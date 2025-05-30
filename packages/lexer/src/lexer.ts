@@ -85,7 +85,7 @@ export class NepdaiLexer {
    * Check for "Namaste Dai" entry point - REQUIRED
    */
   private checkEntryPoint(): void {
-    const entryPoint = "Namaste Dai"
+    const entryPoint = "Namaste Dai";
 
     // Skip any leading whitespace
     this.skipWhitespace()
@@ -139,8 +139,7 @@ export class NepdaiLexer {
   private skipWhitespace(): void {
     while (
       this.position.index < this.input.length &&
-      StringUtils.isWhitespace(this.getCurrentChar()) &&
-      this.getCurrentChar() !== "\n"
+      StringUtils.isWhitespace(this.getCurrentChar())
     ) {
       this.advance()
     }

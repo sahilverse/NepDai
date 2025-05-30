@@ -1,6 +1,5 @@
 Namaste Dai
 
+solti a = 85;
 
-solti score = 85;
-
-lekh score;
+lekh a;
