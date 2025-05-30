@@ -1,0 +1,1 @@
+export { NepdaiParser } from "./parser"
