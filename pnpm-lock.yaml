@@ -127,6 +127,9 @@ importers:
 
   packages/interpreter:
     devDependencies:
+      '@nepdai/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@nepdai/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
