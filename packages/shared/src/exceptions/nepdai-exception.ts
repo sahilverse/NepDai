@@ -48,7 +48,7 @@ export class RuntimeException extends NepdaiException {
  */
 export class UnexpectedCharacterException extends LexerException {
   constructor(character: string, position: Position) {
-    super(`Unexpected character '${character}'`, position)
+    super(`Unexpected character - K Lekhya Vai K Lekhya '${character}'`, position)
     this.name = "UnexpectedCharacterException"
   }
 }
@@ -58,7 +58,7 @@ export class UnexpectedCharacterException extends LexerException {
  */
 export class UnexpectedTokenException extends ParserException {
   constructor(expected: string, actual: string, position?: Position) {
-    super(`Expected ${expected}, but got ${actual}`, position)
+    super(`Yo Chahiyeko ${expected}, Yo Diyis Vai Taile ${actual}`, position)
     this.name = "UnexpectedTokenException"
   }
 }
@@ -68,7 +68,7 @@ export class UnexpectedTokenException extends ParserException {
  */
 export class UndefinedVariableException extends RuntimeException {
   constructor(name: string, position?: Position) {
-    super(`Undefined variable '${name}'`, position)
+    super(`Undefined variable - Variable Define Garna Birsis Vai '${name}'`, position)
     this.name = "UndefinedVariableException"
   }
 }
@@ -78,7 +78,7 @@ export class UndefinedVariableException extends RuntimeException {
  */
 export class TypeErrorException extends RuntimeException {
   constructor(expected: string, actual: string, position?: Position) {
-    super(`Type error: expected ${expected}, but got ${actual}`, position)
+    super(`Type error - Yo Chahiyeko ${expected}, Yo Diyis Vai Taile ${actual}`, position)
     this.name = "TypeErrorException"
   }
 }

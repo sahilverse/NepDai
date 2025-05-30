@@ -94,7 +94,7 @@ export class NepdaiLexer {
     const inputStart = this.input.substring(this.position.index, this.position.index + entryPoint.length)
 
     if (inputStart !== entryPoint) {
-      throw new LexerException("Namaste Dai van vai Suruma", { ...this.position })
+      throw new LexerException("Namaste Dai Van Vai Suruma", { ...this.position })
     }
 
     // Skip the entry point
