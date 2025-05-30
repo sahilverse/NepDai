@@ -104,7 +104,7 @@ export class NepdaiParser {
    * Parse variable declaration
    */
   private parseVariableDeclaration(): VariableDeclarationNode {
-    const identifier = this.consume(TokenType.IDENTIFIER, "Expected variable name") as Token
+    const identifier = this.consume(TokenType.IDENTIFIER, "Expected variable name")
 
     let value: ASTNode | undefined
 
@@ -153,16 +153,22 @@ export class NepdaiParser {
     this.consume(TokenType.BHANE, "Expected 'bhane' after if condition")
 
     const consequent = this.parseStatement()
+    if (!consequent) {
+      throw new UnexpectedTokenException("statement", "null", this.peek().position)
+    }
 
     let alternate: ASTNode | undefined
     if (this.match(TokenType.NATRA)) {
-      alternate = this.parseStatement()
+      const alternateStatement = this.parseStatement()
+      if (alternateStatement) {
+        alternate = alternateStatement
+      }
     }
 
     return {
       type: NodeType.IF_STATEMENT,
       test,
-      consequent: consequent!,
+      consequent,
       alternate,
     }
   }
@@ -174,10 +180,14 @@ export class NepdaiParser {
     const test = this.parseExpression()
     const body = this.parseStatement()
 
+    if (!body) {
+      throw new UnexpectedTokenException("statement", "null", this.peek().position)
+    }
+
     return {
       type: NodeType.WHILE_STATEMENT,
       test,
-      body: body!,
+      body,
     }
   }
 
@@ -602,14 +612,14 @@ export class NepdaiParser {
    * Get current token
    */
   private peek(): Token {
-    return this.tokens[this.current]
+    return this.tokens[this.current]! || this.tokens[this.tokens.length - 1]
   }
 
   /**
    * Get previous token
    */
   private previous(): Token {
-    return this.tokens[this.current - 1]
+    return this.tokens[this.current - 1]! || this.tokens[0]
   }
 
   /**

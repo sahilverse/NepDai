@@ -1,0 +1,13 @@
+Namaste Dai
+
+// Simple hello world program
+lekh "Hello, World!";
+
+// Variable declarations
+solti name = "Nepal";
+solti population = 30000000;
+solti isBeautiful = thik;
+
+lekh "Country:", name;
+lekh "Population:", population;
+lekh "Is beautiful:", isBeautiful;

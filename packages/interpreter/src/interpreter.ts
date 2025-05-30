@@ -117,7 +117,7 @@ export class NepdaiInterpreter {
    * Interpret a program node
    */
   private interpretProgram(node: ProgramNode): RuntimeValue {
-    let result = createNullValue()
+    let result: RuntimeValue = createNullValue()
 
     for (const statement of node.body) {
       result = this.interpret(statement)
@@ -174,7 +174,7 @@ export class NepdaiInterpreter {
    * Interpret a while statement
    */
   private interpretWhileStatement(node: WhileStatementNode): RuntimeValue {
-    let result = createNullValue()
+    let result: RuntimeValue = createNullValue()
 
     while (isTruthy(this.interpret(node.test))) {
       result = this.interpret(node.body)
@@ -192,7 +192,7 @@ export class NepdaiInterpreter {
     const prevEnv = this.environment
     this.environment = blockEnv
 
-    let result = createNullValue()
+    let result: RuntimeValue = createNullValue()
 
     try {
       // Interpret each statement in the block

@@ -1,0 +1,24 @@
+Namaste Dai
+
+// Arithmetic operations in Nepdai
+solti a = 10;
+solti b = 5;
+
+lekh "a =", a;
+lekh "b =", b;
+lekh "a + b =", a + b;
+lekh "a - b =", a - b;
+lekh "a * b =", a * b;
+lekh "a / b =", a / b;
+lekh "a % b =", a % b;
+lekh "a ** b =", a ** b;
+
+// Increment and decrement
+solti counter = 0;
+lekh "Initial counter:", counter;
+
+counter++;
+lekh "After increment:", counter;
+
+counter--;
+lekh "After decrement:", counter;
