@@ -58,7 +58,8 @@ export class UnexpectedCharacterException extends LexerException {
  */
 export class UnexpectedTokenException extends ParserException {
   constructor(expected: string, actual: string, position?: Position) {
-    super(`Yo Chahiyeko ${expected}, Yo Diyis Vai Taile ${actual}`, position)
+    super(`
+      Unexpected token:\nYa "${expected}" Chahiyeko, Taile "${actual}" Lekhis Vai`, position)
     this.name = "UnexpectedTokenException"
   }
 }

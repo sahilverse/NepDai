@@ -82,5 +82,3 @@ export interface Environment {
   lookup(name: string): RuntimeValue
 }
 
-// Import ASTNode if it's needed from another module
-// import { ASTNode } from './path-to-astnode';
