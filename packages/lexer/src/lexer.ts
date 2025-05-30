@@ -5,7 +5,7 @@ import {
   StringUtils,
   LexerException,
   UnexpectedCharacterException,
-} from "@nepdai/shared"
+} from "@nepdai/shared";
 
 /**
  * Nepdai Lexer - Tokenizes Nepdai source code
@@ -82,7 +82,7 @@ export class NepdaiLexer {
   }
 
   /**
-   * Check for "Namaste Dai" entry point
+   * Check for "Namaste Dai" entry point - REQUIRED
    */
   private checkEntryPoint(): void {
     const entryPoint = "Namaste Dai"
@@ -91,15 +91,19 @@ export class NepdaiLexer {
     this.skipWhitespace()
 
     // Check if the input starts with "Namaste Dai"
-    if (this.input.substring(this.position.index, this.position.index + entryPoint.length) === entryPoint) {
-      // Skip the entry point
-      for (let i = 0; i < entryPoint.length; i++) {
-        this.advance()
-      }
+    const inputStart = this.input.substring(this.position.index, this.position.index + entryPoint.length)
 
-      // Skip any whitespace after the entry point
-      this.skipWhitespace()
+    if (inputStart !== entryPoint) {
+      throw new LexerException("Namaste Dai van vai Suruma", { ...this.position })
     }
+
+    // Skip the entry point
+    for (let i = 0; i < entryPoint.length; i++) {
+      this.advance()
+    }
+
+    // Skip any whitespace after the entry point
+    this.skipWhitespace()
   }
 
   /**
@@ -216,7 +220,7 @@ export class NepdaiLexer {
     if (this.position.index < this.input.length) {
       this.advance()
     } else {
-      throw new LexerException("Unterminated string", startPosition)
+      throw new LexerException("Unterminated string - Vai Majale Lekh", startPosition)
     }
 
     return {
