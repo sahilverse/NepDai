@@ -8,6 +8,8 @@ import {
   type IfStatementNode,
   type WhileStatementNode,
   type BlockStatementNode,
+  type BreakStatementNode,
+  type ContinueStatementNode,
   type BinaryExpressionNode,
   type UnaryExpressionNode,
   type UpdateExpressionNode,
@@ -21,7 +23,9 @@ import {
   type ArrayExpressionNode,
   type RuntimeValue,
   RuntimeException,
-} from "@nepdai/shared"
+  BreakException,
+  ContinueException,
+} from "../../shared/src"
 import { NepdaiEnvironment, createGlobalEnvironment } from "./environment"
 import {
   createNumberValue,
@@ -74,6 +78,12 @@ export class NepdaiInterpreter {
 
       case NodeType.BLOCK_STATEMENT:
         return this.interpretBlockStatement(node as BlockStatementNode)
+
+      case NodeType.BREAK_STATEMENT:
+        return this.interpretBreakStatement(node as BreakStatementNode)
+
+      case NodeType.CONTINUE_STATEMENT:
+        return this.interpretContinueStatement(node as ContinueStatementNode)
 
       case NodeType.BINARY_EXPRESSION:
         return this.interpretBinaryExpression(node as BinaryExpressionNode)
@@ -176,8 +186,23 @@ export class NepdaiInterpreter {
   private interpretWhileStatement(node: WhileStatementNode): RuntimeValue {
     let result: RuntimeValue = createNullValue()
 
-    while (isTruthy(this.interpret(node.test))) {
-      result = this.interpret(node.body)
+    try {
+      while (isTruthy(this.interpret(node.test))) {
+        try {
+          result = this.interpret(node.body)
+        } catch (error) {
+          if (error instanceof ContinueException) {
+            continue // Continue to next iteration
+          }
+          throw error // Re-throw other errors including BreakException
+        }
+      }
+    } catch (error) {
+      if (error instanceof BreakException) {
+        // Break out of the loop
+        return result
+      }
+      throw error // Re-throw other errors
     }
 
     return result
@@ -205,6 +230,20 @@ export class NepdaiInterpreter {
     }
 
     return result
+  }
+
+  /**
+   * Interpret a break statement
+   */
+  private interpretBreakStatement(node: BreakStatementNode): RuntimeValue {
+    throw new BreakException()
+  }
+
+  /**
+   * Interpret a continue statement
+   */
+  private interpretContinueStatement(node: ContinueStatementNode): RuntimeValue {
+    throw new ContinueException()
   }
 
   /**

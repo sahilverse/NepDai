@@ -83,3 +83,27 @@ export class TypeErrorException extends RuntimeException {
     this.name = "TypeErrorException"
   }
 }
+
+/**
+ * Break Exception - Used for control flow
+ */
+export class BreakException extends Error {
+  constructor() {
+    super("Break")
+    this.name = "BreakException"
+  }
+}
+
+/**
+ * Continue Exception - Used for control flow
+ */
+export class ContinueException extends Error {
+  constructor() {
+    super("Continue")
+    this.name = "ContinueException"
+  }
+}
+
+
+
+

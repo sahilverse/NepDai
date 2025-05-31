@@ -11,10 +11,9 @@ export enum NodeType {
   PRINT_STATEMENT = "PRINT_STATEMENT",
   IF_STATEMENT = "IF_STATEMENT",
   WHILE_STATEMENT = "WHILE_STATEMENT",
-  FOR_STATEMENT = "FOR_STATEMENT",
-  FUNCTION_DECLARATION = "FUNCTION_DECLARATION",
-  RETURN_STATEMENT = "RETURN_STATEMENT",
   BLOCK_STATEMENT = "BLOCK_STATEMENT",
+  BREAK_STATEMENT = "BREAK_STATEMENT",
+  CONTINUE_STATEMENT = "CONTINUE_STATEMENT",
 
   // Expressions
   BINARY_EXPRESSION = "BINARY_EXPRESSION",
@@ -103,6 +102,20 @@ export interface WhileStatementNode extends ASTNode {
 export interface BlockStatementNode extends ASTNode {
   type: NodeType.BLOCK_STATEMENT
   body: ASTNode[]
+}
+
+/**
+ * Break Statement Node
+ */
+export interface BreakStatementNode extends ASTNode {
+  type: NodeType.BREAK_STATEMENT
+}
+
+/**
+ * Continue Statement Node
+ */
+export interface ContinueStatementNode extends ASTNode {
+  type: NodeType.CONTINUE_STATEMENT
 }
 
 /**

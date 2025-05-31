@@ -1,7 +1,7 @@
-import type { Token, ASTNode, RuntimeValue } from "@nepdai/shared"
-import { NepdaiLexer } from "@nepdai/lexer"
-import { NepdaiParser } from "@nepdai/parser"
-import { NepdaiInterpreter } from "@nepdai/interpreter"
+import type { Token, ASTNode, RuntimeValue } from "../../shared/src"
+import { NepdaiLexer } from "../../lexer/src"
+import { NepdaiParser } from "../../parser/src"
+import { NepdaiInterpreter } from "../../interpreter/src"
 
 /**
  * Nepdai Compiler - Main interface for compiling and running Nepdai code
@@ -12,7 +12,7 @@ export class NepdaiCompiler {
   private interpreter: NepdaiInterpreter
 
   constructor() {
-    this.lexer = new NepdaiLexer("")
+    this.lexer = new NepdaiLexer("", true)
     this.parser = new NepdaiParser([])
     this.interpreter = new NepdaiInterpreter()
   }
@@ -20,8 +20,8 @@ export class NepdaiCompiler {
   /**
    * Tokenize source code
    */
-  tokenize(source: string): Token[] {
-    this.lexer = new NepdaiLexer(source)
+  tokenize(source: string, requireNamesteDai = true): Token[] {
+    this.lexer = new NepdaiLexer(source, requireNamesteDai)
     return this.lexer.tokenize()
   }
 
@@ -43,8 +43,8 @@ export class NepdaiCompiler {
   /**
    * Compile and run source code
    */
-  run(source: string): RuntimeValue {
-    const tokens = this.tokenize(source)
+  run(source: string, requireNamesteDai = true): RuntimeValue {
+    const tokens = this.tokenize(source, requireNamesteDai)
     const ast = this.parse(tokens)
     return this.interpret(ast)
   }
@@ -52,8 +52,8 @@ export class NepdaiCompiler {
   /**
    * Compile source code to AST
    */
-  compile(source: string): ASTNode {
-    const tokens = this.tokenize(source)
+  compile(source: string, requireNamesteDai = true): ASTNode {
+    const tokens = this.tokenize(source, requireNamesteDai)
     return this.parse(tokens)
   }
 }

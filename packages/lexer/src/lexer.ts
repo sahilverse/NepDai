@@ -5,7 +5,7 @@ import {
   StringUtils,
   LexerException,
   UnexpectedCharacterException,
-} from "@nepdai/shared";
+} from "../../shared/src"
 
 /**
  * Nepdai Lexer - Tokenizes Nepdai source code
@@ -14,19 +14,23 @@ export class NepdaiLexer {
   private input: string
   private position: Position
   private tokens: Token[]
+  private requireNamesteDai: boolean
 
-  constructor(input: string) {
+  constructor(input: string, requireNamesteDai = true) {
     this.input = input
     this.position = { line: 1, column: 1, index: 0 }
     this.tokens = []
+    this.requireNamesteDai = requireNamesteDai
   }
 
   /**
    * Tokenize the input source code
    */
   tokenize(): Token[] {
-    // Check for "Namaste Dai" entry point
-    this.checkEntryPoint()
+    // Check for "Namaste Dai" entry point only if required
+    if (this.requireNamesteDai) {
+      this.checkEntryPoint()
+    }
 
     while (this.position.index < this.input.length) {
       this.skipWhitespace()
@@ -49,9 +53,12 @@ export class NepdaiLexer {
         continue
       }
 
-      // Process identifiers and keywords
+      // Process identifiers and keywords (including multi-word keywords)
       if (StringUtils.isAlpha(char)) {
-        this.tokens.push(this.processIdentifier())
+        const token = this.processIdentifierOrKeyword()
+        if (token) {
+          this.tokens.push(token)
+        }
         continue
       }
 
@@ -82,7 +89,7 @@ export class NepdaiLexer {
   }
 
   /**
-   * Check for "Namaste Dai" entry point - REQUIRED
+   * Check for "Namaste Dai" entry point - REQUIRED for files
    */
   private checkEntryPoint(): void {
     const entryPoint = "Namaste Dai"
@@ -94,7 +101,7 @@ export class NepdaiLexer {
     const inputStart = this.input.substring(this.position.index, this.position.index + entryPoint.length)
 
     if (inputStart !== entryPoint) {
-      throw new LexerException("Namaste Dai Van Vai Suruma", { ...this.position })
+      throw new LexerException("Namaste Dai van vai Sururma", { ...this.position })
     }
 
     // Skip the entry point
@@ -104,6 +111,141 @@ export class NepdaiLexer {
 
     // Skip any whitespace after the entry point
     this.skipWhitespace()
+  }
+
+  /**
+   * Process identifiers and multi-word keywords
+   */
+  private processIdentifierOrKeyword(): Token | null {
+    const startPosition = { ...this.position }
+
+    // Try to match multi-word keywords first
+    const multiWordToken = this.tryMatchMultiWordKeyword()
+    if (multiWordToken) {
+      return multiWordToken
+    }
+
+    // Process single word identifier/keyword
+    let identifier = ""
+    while (this.position.index < this.input.length && StringUtils.isAlphaNumeric(this.getCurrentChar())) {
+      identifier += this.getCurrentChar()
+      this.advance()
+    }
+
+    // Check if it's a single-word Nepdai keyword
+    const tokenType = this.getKeywordTokenType(identifier)
+
+    return {
+      type: tokenType,
+      value: tokenType === TokenType.IDENTIFIER ? identifier : undefined,
+      lexeme: identifier,
+      position: startPosition,
+    }
+  }
+
+  /**
+   * Try to match multi-word keywords
+   */
+  private tryMatchMultiWordKeyword(): Token | null {
+    const startPosition = { ...this.position }
+    const savedPosition = { ...this.position }
+
+    // Try "jaba samma"
+    if (this.tryMatchPhrase("jaba samma")) {
+      return {
+        type: TokenType.JABA_SAMMA,
+        lexeme: "jaba samma",
+        position: startPosition,
+      }
+    }
+
+    // Try "vai vayo rokki"
+    this.position = { ...savedPosition }
+    if (this.tryMatchPhrase("vai vayo rokki")) {
+      return {
+        type: TokenType.VAI_VAYO_ROKKI,
+        lexeme: "vai vayo rokki",
+        position: startPosition,
+      }
+    }
+
+    // Try "aghi badh vai"
+    this.position = { ...savedPosition }
+    if (this.tryMatchPhrase("aghi badh vai")) {
+      return {
+        type: TokenType.AGHI_BADH_VAI,
+        lexeme: "aghi badh vai",
+        position: startPosition,
+      }
+    }
+
+    // Reset position if no match
+    this.position = { ...savedPosition }
+    return null
+  }
+
+  /**
+   * Try to match a specific phrase
+   */
+  private tryMatchPhrase(phrase: string): boolean {
+    const words = phrase.split(" ")
+    const startPosition = { ...this.position }
+
+    for (let i = 0; i < words.length; i++) {
+      // Skip whitespace before each word (except the first)
+      if (i > 0) {
+        this.skipWhitespace()
+      }
+
+      // Try to match the word
+      const word = words[i]
+      let matchedWord = ""
+
+      while (
+        matchedWord.length < word!.length &&
+        this.position.index < this.input.length &&
+        StringUtils.isAlpha(this.getCurrentChar())
+      ) {
+        matchedWord += this.getCurrentChar()
+        this.advance()
+      }
+
+      if (matchedWord !== word) {
+        // Reset position and return false
+        this.position = { ...startPosition }
+        return false
+      }
+    }
+
+    return true
+  }
+
+  /**
+   * Get the token type for a single-word keyword or identifier
+   */
+  private getKeywordTokenType(identifier: string): TokenType {
+    switch (identifier) {
+      case "solti":
+        return TokenType.SOLTI
+      case "yadi":
+        return TokenType.YADI
+      case "bhane":
+        return TokenType.BHANE
+      case "natra":
+        return TokenType.NATRA
+      case "lekh":
+        return TokenType.LEKH
+      case "padh":
+        return TokenType.PADH
+      case "thik":
+        return TokenType.THIK
+      case "galat":
+        return TokenType.GALAT
+      case "khali":
+        return TokenType.KHALI
+      default:
+        return TokenType.IDENTIFIER
+    }
   }
 
   /**
@@ -220,7 +362,7 @@ export class NepdaiLexer {
     if (this.position.index < this.input.length) {
       this.advance()
     } else {
-      throw new LexerException("Unterminated string - Vai Majale Lekh", startPosition)
+      throw new LexerException("Unterminated string:\n Rameri Bujera Lekh Ta Vai", startPosition)
     }
 
     return {
@@ -228,74 +370,6 @@ export class NepdaiLexer {
       value,
       lexeme: `${delimiter}${StringUtils.escapeString(value)}${delimiter}`,
       position: startPosition,
-    }
-  }
-
-  /**
-   * Process an identifier or keyword token
-   */
-  private processIdentifier(): Token {
-    const startPosition = { ...this.position }
-    let identifier = ""
-
-    // Collect the identifier
-    while (this.position.index < this.input.length && StringUtils.isAlphaNumeric(this.getCurrentChar())) {
-      identifier += this.getCurrentChar()
-      this.advance()
-    }
-
-    // Check if it's a Nepdai keyword
-    const tokenType = this.getKeywordTokenType(identifier)
-
-    return {
-      type: tokenType,
-      value: tokenType === TokenType.IDENTIFIER ? identifier : undefined,
-      lexeme: identifier,
-      position: startPosition,
-    }
-  }
-
-  /**
-   * Get the token type for a keyword or identifier
-   */
-  private getKeywordTokenType(identifier: string): TokenType {
-    switch (identifier) {
-      case "solti":
-        return TokenType.SOLTI
-      case "yadi":
-        return TokenType.YADI
-      case "bhane":
-        return TokenType.BHANE
-      case "natra":
-        return TokenType.NATRA
-      case "jaba":
-        return TokenType.JABA
-      case "lai":
-        return TokenType.LAI
-      case "kaam":
-        return TokenType.KAAM
-      case "pathau":
-        return TokenType.PATHAU
-      case "lekh":
-        return TokenType.LEKH
-      case "padh":
-        return TokenType.PADH
-      case "thik":
-        return TokenType.THIK
-      case "galat":
-        return TokenType.GALAT
-      case "khali":
-        return TokenType.KHALI
-      case "lyau":
-        return TokenType.LYAU
-      case "barga":
-        return TokenType.BARGA
-      case "naya":
-        return TokenType.NAYA
-      case "yo":
-        return TokenType.YO
-      default:
-        return TokenType.IDENTIFIER
     }
   }
 

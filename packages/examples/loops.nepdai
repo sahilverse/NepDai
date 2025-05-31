@@ -1,21 +1,24 @@
 Namaste Dai
 
-// While loop in Nepdai
+// While loop with break and continue
 solti i = 1;
 
-lekh "Counting from 1 to 5:";
-jaba i <= 5 {
-    lekh "Count:", i;
+lekh "Counting with break and continue:";
+
+jaba samma (i <= 10) {
+    yadi (i == 5) bhane {
+        lekh "Skipping", i;
+        i++;
+        aghi badh vai;
+    }
+    
+    yadi (i == 8) bhane {
+        lekh "Breaking at", i;
+        vai vayo rokki;  // break statement
+    }
+    
+    lekh "Number:", i;
     i++;
 }
 
-// Another while loop example
-solti sum = 0;
-solti num = 1;
-
-jaba num <= 10 {
-    sum += num;
-    num++;
-}
-
-lekh "Sum of numbers 1 to 10:", sum;
+lekh "Loop finished!";

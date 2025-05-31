@@ -10,6 +10,8 @@ import {
   type IfStatementNode,
   type WhileStatementNode,
   type BlockStatementNode,
+  type BreakStatementNode,
+  type ContinueStatementNode,
   type BinaryExpressionNode,
   type UnaryExpressionNode,
   type UpdateExpressionNode,
@@ -22,7 +24,7 @@ import {
   type IdentifierNode,
   type ArrayExpressionNode,
   UnexpectedTokenException,
-} from "@nepdai/shared"
+} from "../../shared/src"
 
 /**
  * Nepdai Parser - Parses tokens into an AST
@@ -81,9 +83,19 @@ export class NepdaiParser {
         return this.parseIfStatement()
       }
 
-      // While statement: jaba condition { ... }
-      if (this.match(TokenType.JABA)) {
+      // While statement: jaba samma condition { ... }
+      if (this.match(TokenType.JABA_SAMMA)) {
         return this.parseWhileStatement()
+      }
+
+      // Break statement: vai vayo rokki;
+      if (this.match(TokenType.VAI_VAYO_ROKKI)) {
+        return this.parseBreakStatement()
+      }
+
+      // Continue statement: aghi badh vai;
+      if (this.match(TokenType.AGHI_BADH_VAI)) {
+        return this.parseContinueStatement()
       }
 
       // Block statement: { ... }
@@ -188,6 +200,28 @@ export class NepdaiParser {
       type: NodeType.WHILE_STATEMENT,
       test,
       body,
+    }
+  }
+
+  /**
+   * Parse break statement
+   */
+  private parseBreakStatement(): BreakStatementNode {
+    this.consume(TokenType.SEMICOLON, "Expected ';' after break statement")
+
+    return {
+      type: NodeType.BREAK_STATEMENT,
+    }
+  }
+
+  /**
+   * Parse continue statement
+   */
+  private parseContinueStatement(): ContinueStatementNode {
+    this.consume(TokenType.SEMICOLON, "Expected ';' after continue statement")
+
+    return {
+      type: NodeType.CONTINUE_STATEMENT,
     }
   }
 
@@ -644,9 +678,9 @@ export class NepdaiParser {
         case TokenType.SOLTI:
         case TokenType.LEKH:
         case TokenType.YADI:
-        case TokenType.JABA:
-        case TokenType.KAAM:
-        case TokenType.PATHAU:
+        case TokenType.JABA_SAMMA:
+        case TokenType.VAI_VAYO_ROKKI:
+        case TokenType.AGHI_BADH_VAI:
           return
       }
 

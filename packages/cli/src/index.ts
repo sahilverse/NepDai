@@ -3,7 +3,9 @@ import { Command } from "commander"
 import * as fs from "fs/promises"
 import * as path from "path"
 import chalk from "chalk"
-import { createNepdaiCompiler } from "@nepdai/core"
+
+// Import from source during development
+import { createNepdaiCompiler } from "../../core/src/index"
 
 const program = new Command()
 
@@ -43,7 +45,7 @@ program
         console.log()
 
         console.log(chalk.blue("Tokens:"))
-        const tokens = compiler.tokenize(source)
+        const tokens = compiler.tokenize(source, true) // Require "Namaste Dai" for files
         tokens.forEach((token, index) => {
           const position = `${token.position.line}:${token.position.column}`
           const value = token.value !== undefined ? ` (${token.value})` : ""
@@ -62,7 +64,7 @@ program
         console.log(chalk.blue("Output:"))
       }
 
-      compiler.run(source)
+      compiler.run(source, true) // Require "Namaste Dai" for files
     } catch (error: any) {
       console.error(chalk.red("Error:"), error.message)
       if (error.position) {
@@ -80,7 +82,7 @@ program
       const filePath = path.resolve(process.cwd(), file)
       const source = await fs.readFile(filePath, "utf-8")
       const compiler = createNepdaiCompiler()
-      const tokens = compiler.tokenize(source)
+      const tokens = compiler.tokenize(source, true) // Require "Namaste Dai" for files
 
       console.log(chalk.blue("=== Nepdai Tokens ==="))
       console.log()
@@ -105,7 +107,7 @@ program
       const filePath = path.resolve(process.cwd(), file)
       const source = await fs.readFile(filePath, "utf-8")
       const compiler = createNepdaiCompiler()
-      const tokens = compiler.tokenize(source)
+      const tokens = compiler.tokenize(source, true) // Require "Namaste Dai" for files
       const ast = compiler.parse(tokens)
 
       console.log(chalk.blue("=== Nepdai AST ==="))
@@ -151,7 +153,7 @@ program
       }
 
       try {
-        const result = compiler.run(input)
+        const result = compiler.run(input, false) // Don't require "Namaste Dai" for REPL
         if (result.type !== "NULL") {
           console.log(chalk.green("=> "), result.value)
         }

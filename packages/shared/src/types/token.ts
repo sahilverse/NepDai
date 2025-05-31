@@ -16,19 +16,14 @@ export enum TokenType {
   YADI = "YADI", // if
   BHANE = "BHANE", // then
   NATRA = "NATRA", // else
-  JABA = "JABA", // while
-  LAI = "LAI", // for
-  KAAM = "KAAM", // function
-  PATHAU = "PATHAU", // return
+  JABA_SAMMA = "JABA_SAMMA", // while (jaba samma)
   LEKH = "LEKH", // print
   PADH = "PADH", // input
   THIK = "THIK", // true
   GALAT = "GALAT", // false
   KHALI = "KHALI", // null
-  LYAU = "LYAU", // import
-  BARGA = "BARGA", // class
-  NAYA = "NAYA", // new
-  YO = "YO", // this
+  VAI_VAYO_ROKKI = "VAI_VAYO_ROKKI", // break (vai vayo rokki)
+  AGHI_BADH_VAI = "AGHI_BADH_VAI", // continue (aghi badh vai)
 
   // Operators
   PLUS = "PLUS", // +
