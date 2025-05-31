@@ -281,10 +281,9 @@ export class NepdaiLexer {
   private skipWhitespace(): void {
     while (
       this.position.index < this.input.length &&
-      StringUtils.isWhitespace(this.getCurrentChar()) &&
-      this.getCurrentChar() !== "\n"
+      StringUtils.isWhitespace(this.getCurrentChar())
     ) {
-      this.advance()
+      this.advance();
     }
   }
 
