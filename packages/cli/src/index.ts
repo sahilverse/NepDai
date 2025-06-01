@@ -4,8 +4,7 @@ import * as fs from "fs/promises"
 import * as path from "path"
 import chalk from "chalk"
 
-// Import from source during development
-import { createNepdaiCompiler } from "../../core/src/index"
+import { createNepdaiCompiler } from "@nepdai/core";
 
 const program = new Command()
 
