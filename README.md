@@ -50,8 +50,15 @@ NepDai is a programming language that uses Nepali keywords, making programming m
 
 <div align="center">
 
-### धन्यवाद (Thank you) for using NepDai! 🙏
+
+
+**Instrutions on Installation will be Soon Updated** 
+**Web based Playground is Under Development**
+**NPM Package is Loading......**
+
 
 **Crafted in Sahilverse for the Nepali programming community**
+
+### धन्यवाद (Thank you) for using NepDai! 🙏
 
 </div>
