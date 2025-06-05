@@ -1,14 +1,17 @@
-# NepDai Programming Language
+# 🇳🇵 NepDai Programming Language
 
 <div align="center">
-  <img src="https://via.placeholder.com/200x200?text=NepDai" alt="NepDai Logo" width="200"/>
   
-  **A Programming Language with Nepali Keywords**
+  # नेपदाइ
+  ### A Programming Language with Nepali Keywords
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
   [![Node.js](https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white)](https://nodejs.org/)
+  [![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 </div>
+
+---
 
 ## About NepDai
 
@@ -16,7 +19,7 @@ NepDai is a programming language that uses Nepali keywords, making programming m
 
 **"Namaste Dai"** - Every NepDai program begins with this traditional Nepali greeting!
 
-## Features
+## ✨ Features
 
 - 🇳🇵 **Nepali Keywords**: Use familiar Nepali words for programming constructs
 - 🚀 **Simple Syntax**: Easy to learn and understand
@@ -24,8 +27,10 @@ NepDai is a programming language that uses Nepali keywords, making programming m
 - 🛠️ **Modern Tooling**: Built with TypeScript and modern development practices
 - 📚 **Rich Examples**: Comprehensive example programs
 - 🎯 **Educational Focus**: Perfect for learning programming concepts
+- ⚡ **Fast Compilation**: Quick tokenization, parsing, and interpretation
+- 🔧 **Debug Mode**: Inspect tokens and AST for learning
 
-## Language Keywords
+## 📖 Language Keywords
 
 | NepDai | English | Description |
 |--------|---------|-------------|
@@ -41,32 +46,41 @@ NepDai is a programming language that uses Nepali keywords, making programming m
 | `galat` | `false` | Boolean false |
 | `khali` | `null` | Null value |
 
-## Installation
+## 🚀 Installation
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
-- pnpm (recommended) or npm
+- **Node.js** (v18 or higher)
+- **pnpm** (recommended) or npm
 
 ### Setup
 
-1. Clone the repository:
+1. **Clone the repository:**
 \`\`\`bash
 git clone https://github.com/yourusername/nepdai.git
 cd nepdai
 \`\`\`
 
-2. Install dependencies:
+2. **Install dependencies:**
 \`\`\`bash
 pnpm install
 \`\`\`
 
-3. Build the project:
+3. **Build the project:**
 \`\`\`bash
 pnpm build
 \`\`\`
 
-## Usage
+### NPM Package (Coming Soon)
+\`\`\`bash
+# Install globally (coming soon)
+npm install -g nepdai
+
+# Or use with npx (coming soon)
+npx nepdai run program.nepdai
+\`\`\`
+
+## 💻 Usage
 
 ### Running Programs
 
@@ -88,8 +102,7 @@ yadi age >= 18 bhane {
 }
 \`\`\`
 
-Run the program:
-
+**Run the program:**
 \`\`\`bash
 pnpm nepdai run path/to/your/program.nepdai
 \`\`\`
@@ -97,22 +110,20 @@ pnpm nepdai run path/to/your/program.nepdai
 ### Interactive Mode (REPL)
 
 Start the interactive mode:
-
 \`\`\`bash
 pnpm nepdai repl
 \`\`\`
 
-In REPL mode, you can type NepDai code directly and see the results immediately. The "Namaste Dai" greeting is not required in REPL mode.
+> **Note:** In REPL mode, you can type NepDai code directly and see results immediately. The "Namaste Dai" greeting is not required in REPL mode.
 
 ### Debug Mode
 
 To see tokens and AST:
-
 \`\`\`bash
 pnpm nepdai run path/to/your/program.nepdai -d
 \`\`\`
 
-## Language Syntax
+## 📝 Language Syntax
 
 ### Basic Structure
 
@@ -132,6 +143,7 @@ solti nothing = khali;   // null
 \`\`\`nepdai
 solti numbers = [1, 2, 3, 4, 5];
 solti names = ["Ram", "Shyam", "Hari"];
+solti mixed = [1, "hello", thik, khali];
 \`\`\`
 
 ### Arithmetic Operations
@@ -160,27 +172,20 @@ yadi age >= 18 bhane {
 }
 \`\`\`
 
-### Loops
+### Loops with Break and Continue
 
 \`\`\`nepdai
-solti count = 1;
+solti i = 1;
 
-jaba samma count <= 5 {
-    lekh "Count:", count;
-    count++;
-}
-\`\`\`
-
-### Break and Continue
-
-\`\`\`nepdai
 jaba samma i <= 10 {
     yadi i == 5 bhane {
+        lekh "Skipping", i;
         i++;
         aghi badh vai;  // continue
     }
     
     yadi i == 8 bhane {
+        lekh "Breaking at", i;
         vai vayo rokki;  // break
     }
     
@@ -189,106 +194,106 @@ jaba samma i <= 10 {
 }
 \`\`\`
 
-## Examples
 
-Check out the `examples/` directory for more sample programs:
 
-- `hello.nepdai` - Basic hello world
-- `arithmetic.nepdai` - Mathematical operations
-- `conditionals.nepdai` - If-else statements
-- `while-with-break.nepdai` - Loops with break and continue
-- `arrays.nepdai` - Working with arrays
-
-## Project Structure
+## 🏗️ Project Structure
 
 \`\`\`
 nepdai/
-├── apps/
-│   └── cli/            # Command-line interface
 ├── packages/
-│   ├── core/           # Core compiler functionality
+│   ├── cli/            # Command-line interface
+│   ├── core/           # Core compiler functionality  
 │   ├── interpreter/    # NepDai interpreter
 │   ├── lexer/          # Lexical analyzer
 │   ├── parser/         # Syntax parser
-│   └── shared/         # Shared types and utilities
-├── examples/           # Example NepDai programs
-├── scripts/            # Build and utility scripts
-└── docs/               # Documentation
+│   ├── shared/         # Shared types and utilities
+|   |── examples/       # Example NepDai programs
+│   └── typescript-config/ # Shared TypeScript config
+├── apps/docs           # Documentation (if created)
+├── package.json        # Root package configuration
+├── pnpm-workspace.yaml # pnpm workspace configuration
+├── turbo.json          # Turbo build configuration
+└── tsconfig.json       # TypeScript configuration
 \`\`\`
 
-## Development
+## 🛠️ Development
 
 ### Building
-
 \`\`\`bash
 pnpm build
 \`\`\`
 
 ### Development Mode
-
 \`\`\`bash
 pnpm dev
 \`\`\`
 
-### Running Tests
-
+### Clean Build
 \`\`\`bash
-pnpm test
+pnpm clean
+pnpm build
 \`\`\`
 
-## CLI Commands
+## 🖥️ CLI Commands
 
-- `nepdai run <file>` - Run a NepDai program
-- `nepdai repl` - Start interactive mode
-- `nepdai tokens <file>` - Show tokens for a program
-- `nepdai ast <file>` - Show AST for a program
-- `nepdai run <file> -d` - Run with debug information
+| Command | Description |
+|---------|-------------|
+| `pnpm nepdai run <file>` | Run a NepDai program |
+| `pnpm nepdai repl` | Start interactive mode |
+| `pnpm nepdai tokens <file>` | Show tokens for a program |
+| `pnpm nepdai ast <file>` | Show AST for a program |
+| `pnpm nepdai run <file> -d` | Run with debug information |
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### How to Contribute
+
+1. **Fork** the repository
+2. **Create** your feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add some amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
 
 ### Development Guidelines
 
-- Follow TypeScript best practices
-- Add tests for new features
-- Update documentation as needed
-- Use meaningful commit messages
+- ✅ Follow TypeScript best practices
+- ✅ Add tests for new features
+- ✅ Update documentation as needed
+- ✅ Use meaningful commit messages
+- ✅ Ensure all packages build successfully
 
-## Roadmap
+## 🗺️ Roadmap
 
-- [ ] Function declarations and calls
-- [ ] Object-oriented programming features
-- [ ] Module system
-- [ ] Standard library
-- [ ] Package manager
-- [ ] IDE/Editor support
-- [ ] More built-in functions
+- [ ] **NPM package publication**
+- [ ] **Official website with documentation**
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
-- Inspired by the rich cultural heritage of Nepal
-- Built with love for the Nepali programming community
-- Thanks to all contributors and supporters
+- 🇳🇵 Inspired by the rich cultural heritage of Nepal
+- ❤️ Built with love for the Nepali programming community
+- 🌟 Thanks to all contributors and supporters
+- 🚀 Powered by modern TypeScript and Node.js ecosystem
 
-## Support
+## 📞 Support
 
-If you have questions or need help:
-
-- Open an issue on GitHub
-- Join our community discussions
-- Check the documentation in the `docs/` folder
+- 🌐 **Official Documentation** with interactive playground (launching soon)
+- 🐛 **Open an issue** on GitHub
+- 💬 **Join our community** discussions
+- 📚 **Check the documentation** in the repository
+- 📧 **Contact the maintainers** for support
 
 ---
 
-**धन्यवाद (Thank you) for using NepDai!** 🙏
+<div align="center">
+
+### धन्यवाद (Thank you) for using NepDai! 🙏
+
+**Crafted in Sahilverse for the Nepali programming community**
+
+</div>
