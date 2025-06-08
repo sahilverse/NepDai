@@ -132,17 +132,6 @@ Namaste Dai
  
 ```
 
-
-<h3 align="center">Built-ins</h3>
-<p align="center">Use <code>lekh</code> to print anything to console.</p>
-<p align="center">No need for "+" to concatenate the variables.</p>
-
-```
-Namaste Dai
-  solti a = "Sahil";
-  lekh "My name is", a;
-```
-
 <h3 align="center">Conditionals</h3>
 <p align="center">Nepdai supports conditional statements using <code>yadi (condition) bhane</code> for "if", <code>natra yadi (condition) bhane</code> for "else if", and <code>natra</code> for the final "else". If a <code>yadi</code> condition is <code>thik</code>, its block runs. If not, the next <code>natra yadi</code> (if any) is checked. If all fail, the <code>natra</code> block runs. Parentheses around conditions are optional!</p>
 
