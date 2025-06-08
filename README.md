@@ -65,6 +65,7 @@ nepdai run test.nepdai
 ```
 
 <h4 align="left">Other Commands</h4>
+
 ```
  tokens <file>         Show tokens for a Nepdai program
  ast <file>            Show AST for a Nepdai program
