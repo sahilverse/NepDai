@@ -109,6 +109,7 @@ Namaste Dai
 <h3 align="center">Built-ins</h3>
 <p align="center">Use <code>lekh</code> to print anything to console.</p>
 <p align="center">No need for "+" to concatenate the variables.</p>
+
 ```
 Namaste Dai
   solti a = "Sahil";
@@ -116,7 +117,7 @@ Namaste Dai
 ```
 
 <h3 align="center">Conditionals</h3>
-<p align="center">Nepdai supports if-else-if ladder construct , <code>yadi (condition) bhane</code> block will execute if condition is <code>thik</code>, otherwise one of the subsequently added <code>natra yadi (condition) bhane</code> blocks will execute if their respective condition is <code>thik</code>, and the <code>natra</code> block will eventually execute if all of the above conditions are <code>galat</code>. The use of parenthesis for conditions are optional, just like python.</p>
+<p align="center">Nepdai supports if-else ladder construct , <code>yadi (condition) bhane</code> block will execute if condition is <code>thik</code>, otherwise one of the subsequently added <code>natra yadi (condition) bhane</code> blocks will execute if their respective condition is <code>thik</code>, and the <code>natra</code> block will eventually execute if all of the above conditions are <code>galat</code>. The use of parenthesis for conditions are optional.</p>
 
 ```
 Namaste Dai
