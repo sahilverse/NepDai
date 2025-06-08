@@ -1,6 +1,7 @@
 {
   "name": "nepdai",
   "private": true,
+  "version": "0.0.1",
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -18,6 +19,24 @@
     "turbo": "^2.4.4",
     "typescript": "5.8.2"
   },
+  "keywords": [
+    "nepdai",
+    "compiler",
+    "typescript",
+    "language",
+    "programming language",
+    "compiler",
+    "parser",
+    "javascript"
+  ],
+  "author": "Sahil Dahal",
+  "contributors": [
+    {
+      "name": "Sahil Dahal",
+      "github": "https://github.com/sahilverse"
+    }
+  ],
+  "license": "MIT",
   "packageManager": "pnpm@10.11.0",
   "engines": {
     "node": ">=18"
