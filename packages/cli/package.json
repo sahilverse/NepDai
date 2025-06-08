@@ -1,5 +1,5 @@
 {
-    "name": "@nepdai/cli",
+    "name": "nepdai",
     "version": "1.0.0",
     "main": "bin/index.js",
     "source": "src/index.ts",
@@ -10,6 +10,28 @@
     "bin": {
         "nepdai": "./bin/index.js"
     },
+    "files": [
+        "bin"
+    ],
+    "author": {
+        "name": "Sahil Dahal",
+        "email": "the.sahil.verse@gmail.com",
+        "github": "https://github.com/sahilverse"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sahilverse/nepdai/issues"
+    },
+    "homepage": "https://github.com/sahilverse/nepdai#readme",
+    "keywords": [
+        "nepdai",
+        "cli",
+        "typescript",
+        "compiler",
+        "language",
+        "programming language",
+        "parser"
+    ],
     "dependencies": {
         "commander": "^11.0.0",
         "chalk": "^4.1.2"
