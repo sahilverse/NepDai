@@ -29,13 +29,11 @@
     "parser",
     "javascript"
   ],
-  "author": "Sahil Dahal",
-  "contributors": [
-    {
-      "name": "Sahil Dahal",
-      "github": "https://github.com/sahilverse"
-    }
-  ],
+  "author": {
+    "name": "Sahil Dahal",
+    "email": "the.sahil.verse@gmail.com",
+    "url": "https://github.com/sahilverse"
+  },
   "license": "MIT",
   "packageManager": "pnpm@10.11.0",
   "engines": {
