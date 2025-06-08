@@ -76,7 +76,7 @@ nepdai run test.nepdai
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
-<p align="center"><code>Namaste Dai</code> is the entrypoint for the program. If anything is written above it, An error will occur. So Remember Greeting Dai Above all is must.</p>
+<p align="center">Every NepDai program must start with <code>Namaste Dai</code> as the first line. This traditional greeting serves as the program's entry point and is mandatory for all <code>.nepdai</code> files. Any code written before this greeting will result in a compilation error, emphasizing the cultural significance of proper greetings in Nepali tradition.</p>
 
 ```
 // Error: If anything is present here, greeting above all
@@ -85,7 +85,7 @@ Namaste Dai
 ```
 
 <h3 align="center">Variables</h3>
-<p align="center">Variables can be declared using <code>solti</code>.</p>
+<p align="center">Variables can be declared using <code>solti</code> keyword.</p>
 
 ```
 Namaste Dai
@@ -97,14 +97,41 @@ Namaste Dai
 ```
 
 <h3 align="center">Types</h3>
-<p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>khali</code>. <code>thik</code> and <code>galat</code> are the boolean values.</p>
+<p align="center">Nepdai supports various data types just like other programming languages. The special value <code>khali</code> represents null, while boolean logic uses <code>thik</code> for true conditions and <code>galat</code> for false conditions.</p>
 
 ```
 Namaste Dai
-  solti true = thik;
+  solti string = "string";
+  solti number = 10;
+  solti float = 10.2; // Also a number
+  solti true = thik; 
   solti false = galat;
   solti null = khali; 
 ```
+
+<h3 align="center">Arrays</h3>
+<p align="center">Nepdai have support for <strong>Array</strong> as well.  To create an array, simply assign a list of values inside square brackets ([]) to a variable declared with solti. <strong>Array operations are very limited right now.</strong>.</p>
+
+```
+Namaste Dai
+
+  // Array examples in Nepdai
+  solti numbers = [1, 2, 3, 4, 5];
+  solti names = ["Ram", "Shyam", "Gita"];
+  solti mixed = [1, "hello", thik, khali];
+
+  lekh "Numbers:", numbers;
+  lekh "Names:", names;
+  lekh "Mixed array:", mixed;
+
+  // Empty array
+  solti empty = [];
+  lekh "Empty array:", empty;
+
+  // Other Operations on Arrays are not supported right now
+ 
+```
+
 
 <h3 align="center">Built-ins</h3>
 <p align="center">Use <code>lekh</code> to print anything to console.</p>
@@ -117,7 +144,7 @@ Namaste Dai
 ```
 
 <h3 align="center">Conditionals</h3>
-<p align="center">Nepdai supports if-else ladder construct , <code>yadi (condition) bhane</code> block will execute if condition is <code>thik</code>, otherwise one of the subsequently added <code>natra yadi (condition) bhane</code> blocks will execute if their respective condition is <code>thik</code>, and the <code>natra</code> block will eventually execute if all of the above conditions are <code>galat</code>. The use of parenthesis for conditions are optional.</p>
+<p align="center">Nepdai supports conditional statements using <code>yadi (condition) bhane</code> for "if", <code>natra yadi (condition) bhane</code> for "else if", and <code>natra</code> for the final "else". If a <code>yadi</code> condition is <code>thik</code>, its block runs. If not, the next <code>natra yadi</code> (if any) is checked. If all fail, the <code>natra</code> block runs. Parentheses around conditions are optional!</p>
 
 ```
 Namaste Dai
@@ -151,7 +178,7 @@ yadi (score >= 90) bhane {
 ```
 
 <h3 align="center">Loops</h3>
-<p align="center">Statements inside <code>jaba samma</code> blocks are executed as long as a specified condition evaluates to thik. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>vai vayo rokki</code> to break the loop and <code className="language-cpp">aghi badh vai</code> to continue within loop.</p>
+<p align="center">To create loops, use <code>jaba samma</code>. This repeats code as long as the condition remains <code>thik</code>. Use <code>vai vayo rokki</code> to break out of the loop early, and <code>aghi badh vai</code> to skip to the next iteration.</p>
 
 
 ```
@@ -162,14 +189,14 @@ solti i = 1;
 
 lekh "Counting with break and continue:";
 
-jaba samma i <= 10 {
-    yadi i == 5 bhane {
+jaba samma (i <= 10) {
+    yadi (i == 5) bhane {
         lekh "Skipping", i;
         i++;
         aghi badh vai;
     }
     
-    yadi i == 8 bhane {
+    yadi (i == 8) bhane {
         lekh "Breaking at", i;
         vai vayo rokki;
     }
