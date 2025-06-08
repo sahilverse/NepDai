@@ -45,7 +45,7 @@ npm i -g nepdai
 <h4 align="left">Create a new file (<code>test.nepdai</code>)</h4>
 
 
-<h4 align="left">Edit the file with a text editor.
+<h4 align="left">Edit the file with a text editor.</h4>
 
 ```
 Namaste Dai
