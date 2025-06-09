@@ -19,6 +19,11 @@ NepDai is a programming language that uses Nepali keywords, making programming m
 
 **"Namaste Dai"** - Every NepDai program begins with this traditional Nepali greeting!
 
+<h2 align="center">Installation</h2>
+
+```
+npm i -g nepdai
+```
 ## 📖 Language Keywords
 
 | NepDai | English | Description |
@@ -35,11 +40,6 @@ NepDai is a programming language that uses Nepali keywords, making programming m
 | `khali` | `null` | Null value |
 
 
-<h2 align="center">Installation</h2>
-
-```
-npm i -g nepdai
-```
 
 <h2 align="center">Usage</h2>
 
