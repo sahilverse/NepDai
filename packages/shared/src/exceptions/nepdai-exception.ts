@@ -78,7 +78,7 @@ export class UndefinedVariableException extends RuntimeException {
  */
 export class TypeErrorException extends RuntimeException {
   constructor(expected: string, actual: string, position?: Position) {
-    if (actual === "assignment operation") {
+    if (actual === "assignment operation" || actual.startsWith("Unknown")) {
       super(expected, position);
     } else {
 
