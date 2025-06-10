@@ -1,4 +1,4 @@
-import { type RuntimeValue, ValueType, TypeErrorException } from "@nepdai/shared"
+import { type RuntimeValue, ValueType, TypeErrorException, DivisionByZeroException } from "@nepdai/shared"
 import { createNumberValue, createStringValue, createBooleanValue, isTruthy, isEqual } from "./values"
 
 /**
@@ -90,7 +90,7 @@ export function performAssignmentOperation(operator: string, left: RuntimeValue,
     case "/=":
       return performDivision(left, right)
     default:
-      throw new TypeErrorException(`Unknown assignment operator: ${operator}`, "assignment operation")
+      throw new TypeErrorException(`Assignment Operator Milena vai: ${operator}`, "assignment operation")
   }
 }
 
@@ -110,7 +110,7 @@ function performAddition(left: RuntimeValue, right: RuntimeValue): RuntimeValue 
     return createNumberValue(left.value + right.value)
   }
 
-  throw new TypeErrorException("number or string", `${left.type} and ${right.type}`)
+  throw new TypeErrorException("NUMBER or STRING", `${left.type} ra ${right.type}`)
 }
 
 /**
@@ -118,7 +118,7 @@ function performAddition(left: RuntimeValue, right: RuntimeValue): RuntimeValue 
  */
 function performSubtraction(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   return createNumberValue(left.value - right.value)
@@ -129,7 +129,7 @@ function performSubtraction(left: RuntimeValue, right: RuntimeValue): RuntimeVal
  */
 function performMultiplication(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   return createNumberValue(left.value * right.value)
@@ -140,11 +140,11 @@ function performMultiplication(left: RuntimeValue, right: RuntimeValue): Runtime
  */
 function performDivision(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   if (right.value === 0) {
-    throw new TypeErrorException("Division by zero", "division operation")
+    throw new DivisionByZeroException();
   }
 
   return createNumberValue(left.value / right.value)
@@ -155,11 +155,11 @@ function performDivision(left: RuntimeValue, right: RuntimeValue): RuntimeValue 
  */
 function performModulo(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("number", `${left.type} ra ${right.type}`)
   }
 
   if (right.value === 0) {
-    throw new TypeErrorException("Division by zero", "modulo operation")
+    throw new DivisionByZeroException();
   }
 
   return createNumberValue(left.value % right.value)
@@ -170,7 +170,7 @@ function performModulo(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
  */
 function performPower(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   return createNumberValue(Math.pow(left.value, right.value))
@@ -181,7 +181,7 @@ function performPower(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
  */
 function performLessThan(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   return createBooleanValue(left.value < right.value)
@@ -192,7 +192,7 @@ function performLessThan(left: RuntimeValue, right: RuntimeValue): RuntimeValue 
  */
 function performGreaterThan(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   return createBooleanValue(left.value > right.value)
@@ -203,7 +203,7 @@ function performGreaterThan(left: RuntimeValue, right: RuntimeValue): RuntimeVal
  */
 function performLessEqual(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   return createBooleanValue(left.value <= right.value)
@@ -214,7 +214,7 @@ function performLessEqual(left: RuntimeValue, right: RuntimeValue): RuntimeValue
  */
 function performGreaterEqual(left: RuntimeValue, right: RuntimeValue): RuntimeValue {
   if (left.type !== ValueType.NUMBER || right.type !== ValueType.NUMBER) {
-    throw new TypeErrorException("number", `${left.type} and ${right.type}`)
+    throw new TypeErrorException("NUMBER", `${left.type} ra ${right.type}`)
   }
 
   return createBooleanValue(left.value >= right.value)

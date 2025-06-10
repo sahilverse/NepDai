@@ -78,10 +78,27 @@ export class UndefinedVariableException extends RuntimeException {
  */
 export class TypeErrorException extends RuntimeException {
   constructor(expected: string, actual: string, position?: Position) {
-    super(`Type error - Yo Chahiyeko ${expected}, Yo Diyis Vai Taile ${actual}`, position)
+    if (actual === "assignment operation") {
+      super(expected, position);
+    } else {
+
+      super(`Type error - Ya ${expected} Chahiyeko , ${actual} Diyis Vai Taile`, position)
+    }
     this.name = "TypeErrorException"
   }
 }
+
+/**
+ * Division By Zero Exception
+ */
+
+export class DivisionByZeroException extends RuntimeException {
+  constructor(position?: Position) {
+    super("Division by zero - K Output Sochera Garis Vai?", position)
+    this.name = "DivisionByZeroException"
+  }
+}
+
 
 /**
  * Break Exception - Used for control flow
