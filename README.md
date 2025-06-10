@@ -73,7 +73,6 @@ nepdai test.nepdai
  tokens <file>         Show tokens for a Nepdai program
  ast <file>            Show AST for a Nepdai program
  repl                  Start Nepdai REPL
- help [command]        display help for command
 ```
 
 <h2 align="center">Documentation</h2>
