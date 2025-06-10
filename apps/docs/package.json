@@ -1,5 +1,6 @@
 {
-  "name": "docs",
+  "name": "@nepdai/docs",
+  "description": "Documentation for Nepdai",
   "version": "0.1.0",
   "type": "module",
   "private": true,
@@ -11,11 +12,15 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@nepdai/core": "workspace:*",
     "next": "^15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
+    "tailwindcss": "^4.1.8",
+    "postcss": "^8.5.4",
     "@nepdai/eslint-config": "workspace:*",
     "@nepdai/typescript-config": "workspace:*",
     "@types/react": "19.0.10",
