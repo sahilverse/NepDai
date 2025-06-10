@@ -8,11 +8,11 @@ import { createNepdaiCompiler } from "@nepdai/core";
 
 const program = new Command()
 
-program.name("nepdai").description("Nepdai Programming Language Compiler and Interpreter").version("1.0.0")
-
 program
-  .command("run <file>")
-  .description("Run a Nepdai program")
+  .name("nepdai")
+  .description("Nepdai Programming Language Compiler and Interpreter")
+  .version("1.0.0")
+  .argument("<file>", "Nepdai source file")
   .option("-d, --debug", "Enable debug mode")
   .action(async (file, options) => {
     try {
@@ -71,7 +71,10 @@ program
       }
       process.exit(1)
     }
+
   })
+
+
 
 program
   .command("tokens <file>")

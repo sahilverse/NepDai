@@ -58,7 +58,7 @@ Namaste Dai
 <h4 align="left">Run</h4>
 
 ```
-nepdai run test.nepdai
+nepdai test.nepdai
 ```
 
 <h4 align="left">Output</h4>
