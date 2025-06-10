@@ -36,7 +36,7 @@
     "url": "https://github.com/sahilverse"
   },
   "license": "MIT",
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.12.1",
   "engines": {
     "node": ">=18"
   }
