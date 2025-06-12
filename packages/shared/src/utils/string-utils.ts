@@ -30,31 +30,6 @@ export class StringUtils {
     return /\s/.test(char)
   }
 
-  /**
-   * Check if a string is a Nepdai keyword
-   */
-  static isNepdaiKeyword(str: string): boolean {
-    const keywords = [
-      "solti",
-      "yadi",
-      "bhane",
-      "natra",
-      "jaba",
-      "lai",
-      "kaam",
-      "pathau",
-      "lekh",
-      "padh",
-      "thik",
-      "galat",
-      "khali",
-      "lyau",
-      "barga",
-      "naya",
-      "yo",
-    ]
-    return keywords.includes(str)
-  }
 
   /**
    * Escape string for output
