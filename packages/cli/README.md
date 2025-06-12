@@ -15,7 +15,7 @@
 
 ## About NepDai
 
-NepDai is a programming language that uses Nepali keywords, making programming more accessible to Nepali speakers. The language combines familiar programming concepts with Nepali terminology, creating a unique and culturally relevant coding experience.
+NepDai is a fun Nepali programming language inspired by Bhailang and adds a unique Nepali twist to the playful coding experience. The language combines familiar programming concepts with Nepali terminology, creating a unique and culturally relevant coding experience.
 
 **"Namaste Dai"** - Every NepDai program begins with this traditional Nepali greeting!
 
