@@ -20,6 +20,7 @@ export enum NodeType {
   UNARY_EXPRESSION = "UNARY_EXPRESSION",
   UPDATE_EXPRESSION = "UPDATE_EXPRESSION",
   ASSIGNMENT_EXPRESSION = "ASSIGNMENT_EXPRESSION",
+  CALL_EXPRESSION = "CALL_EXPRESSION",
 
 
   // Literals
@@ -29,9 +30,8 @@ export enum NodeType {
   NULL_LITERAL = "NULL_LITERAL",
   IDENTIFIER = "IDENTIFIER",
 
-  // Array 
+  // Array and Object
   ARRAY_EXPRESSION = "ARRAY_EXPRESSION",
-
 }
 
 /**
@@ -156,7 +156,14 @@ export interface AssignmentExpressionNode extends ASTNode {
   right: ASTNode
 }
 
-
+/**
+ * Call Expression Node
+ */
+export interface CallExpressionNode extends ASTNode {
+  type: NodeType.CALL_EXPRESSION
+  callee: ASTNode
+  arguments: ASTNode[]
+}
 
 /**
  * Numeric Literal Node
