@@ -35,7 +35,7 @@ export function performBinaryOperation(operator: string, left: RuntimeValue, rig
     case "||":
       return createBooleanValue(isTruthy(left) || isTruthy(right))
     default:
-      throw new TypeErrorException(`Unknown binary operator: ${operator}`, "binary operation")
+      throw new TypeErrorException(`Unknown binary operator - Vai Herera Code Garna: ${operator}`, "binary operation")
   }
 }
 
@@ -52,7 +52,7 @@ export function performUnaryOperation(operator: string, operand: RuntimeValue): 
     case "!":
       return createBooleanValue(!isTruthy(operand))
     default:
-      throw new TypeErrorException(`Unknown unary operator: ${operator}`, "unary operation")
+      throw new TypeErrorException(`Unknown unary operator - Vai Herera Code Garna: ${operator}`, "unary operation")
   }
 }
 

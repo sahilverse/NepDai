@@ -6,9 +6,7 @@ export enum ValueType {
   STRING = "STRING",
   BOOLEAN = "BOOLEAN",
   NULL = "NULL",
-  FUNCTION = "FUNCTION",
   ARRAY = "ARRAY",
-  OBJECT = "OBJECT",
 }
 
 /**
@@ -51,17 +49,6 @@ export interface NullValue extends RuntimeValue {
   value: null
 }
 
-/**
- * Function Value
- */
-export interface FunctionValue extends RuntimeValue {
-  type: ValueType.FUNCTION
-  value: {
-    parameters: string[]
-    body: any // Placeholder for ASTNode, assuming it needs to be imported
-    closure: Environment
-  }
-}
 
 /**
  * Array Value

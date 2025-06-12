@@ -14,7 +14,6 @@ import {
   type UnaryExpressionNode,
   type UpdateExpressionNode,
   type AssignmentExpressionNode,
-  type CallExpressionNode,
   type NumericLiteralNode,
   type StringLiteralNode,
   type BooleanLiteralNode,
@@ -97,9 +96,6 @@ export class NepdaiInterpreter {
       case NodeType.ASSIGNMENT_EXPRESSION:
         return this.interpretAssignmentExpression(node as AssignmentExpressionNode)
 
-      case NodeType.CALL_EXPRESSION:
-        return this.interpretCallExpression(node as CallExpressionNode)
-
       case NodeType.NUMERIC_LITERAL:
         return this.interpretNumericLiteral(node as NumericLiteralNode)
 
@@ -119,7 +115,7 @@ export class NepdaiInterpreter {
         return this.interpretArrayExpression(node as ArrayExpressionNode)
 
       default:
-        throw new RuntimeException(`Unknown node type: ${(node as any).type}`)
+        throw new RuntimeException(`Vai Node Type Milena ${(node as any).type}`)
     }
   }
 
@@ -270,7 +266,7 @@ export class NepdaiInterpreter {
    */
   private interpretUpdateExpression(node: UpdateExpressionNode): RuntimeValue {
     if (node.argument.type !== NodeType.IDENTIFIER) {
-      throw new RuntimeException("Invalid left-hand side in assignment")
+      throw new RuntimeException("Left-hand Side Check Gara Solti Update Expression Ma")
     }
 
     const identifier = node.argument as IdentifierNode
@@ -288,7 +284,7 @@ export class NepdaiInterpreter {
    */
   private interpretAssignmentExpression(node: AssignmentExpressionNode): RuntimeValue {
     if (node.left.type !== NodeType.IDENTIFIER) {
-      throw new RuntimeException("Invalid left-hand side in assignment")
+      throw new RuntimeException("Left-hand Side Check Gara Solti Assignment Expression Ma")
     }
 
     const identifier = node.left as IdentifierNode
@@ -305,13 +301,7 @@ export class NepdaiInterpreter {
     }
   }
 
-  /**
-   * Interpret a call expression
-   */
-  private interpretCallExpression(node: CallExpressionNode): RuntimeValue {
-    // For now, we don't support function calls
-    throw new RuntimeException("Function calls are not yet supported")
-  }
+
 
   /**
    * Interpret a numeric literal
